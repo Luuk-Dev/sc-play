@@ -1,0 +1,43 @@
+{
+  "name": "sc-play",
+  "version": "1.0.0",
+  "description": "A package which allows you to create streams and get information about SoundCloud tracks and playlists",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "soundcloud",
+    "download",
+    "stream",
+    "search",
+    "info",
+    "downloader",
+    "play",
+    "audio",
+    "music",
+    "track",
+    "playlist",
+    "album",
+    "tracks",
+    "playlists",
+    "albums"
+  ],
+  "author": "Luuk",
+  "publisher": "Luuk",
+  "readme": "README.md",
+  "license": "MIT",
+  "typings": "index.d.ts",
+  "contributors": [{
+    "name": "Luuk",
+    "url": "https://github.com/Luuk-Dev"
+  }],
+  "bugs": {
+    "url": "https://github.com/Luuk-Dev/sc-play"
+  },
+  "homepage": "https://github.com/Luuk-Dev/sc-play",
+  "repository": {
+    "url": "https://github.com/Luuk-Dev/sc-play",
+    "type": "github"
+  }
+}

@@ -38,6 +38,7 @@ You can receive information from both tracks and playlists by using the `getInfo
 * author: An object with information about the artist of the track or creator of the playlist
 * songs: (Only for playlists) an array with the songs of the playlist
 > The songs property will either provide the `SoundCloudTrack` or the `SoundCloudBaseTrack` class based on the information which has been received by the API. The `SoundCloudBaseTrack` doesn't provide as many properties as the `SoundCloudTrack` does.
+
 Example:
 ```js
 const scplay = require('sc-play');

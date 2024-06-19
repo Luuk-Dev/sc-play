@@ -25,6 +25,7 @@ class SoundCloudPlaylist{
                 this.songs.push(new SoundCloudBaseTrack(track, clientId));
             }
         }
+        this.thumbnail = data.artwork_url;
         this.type = 'playlist';
         this.clientId = clientId;
     }

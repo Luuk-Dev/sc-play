@@ -17,6 +17,7 @@ class SoundCloudTrack{
         },
         this.formats = data.media.transcodings;
         this.partial = false;
+        this.thumbnail = data.artwork_url;
         this.type = 'track';
         this.clientId = clientId;
     }

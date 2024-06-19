@@ -75,3 +75,12 @@ scplay.getClientId().then(clientId => {
     console.log(`New client id:`, clientId);
 }).catch(console.log);
 ```
+
+## Validating a SoundCloud url
+You can validate a SoundCloud url by using the `validateSoundCloudURL` function. The function requires one argument, which is the url you'd like to validate.
+Example:
+```js
+const scplay = require('sc-play');
+
+scplay.validateSoundCloudURL('https://soundcloud.com/futureisnow/future-metro-boomin-we-still'); // Output: true
+```

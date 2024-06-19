@@ -35,6 +35,7 @@ class SoundCloudTrack{
     };
     formats: [];
     partial: false;
+    thumbnail: string;
     type: 'track';
     clientId: string;
 }
@@ -61,6 +62,7 @@ class SoundCloudPlaylist{
         followers: number;
     }
     songs: [SoundCloudTrack | SoundCloudBaseTrack];
+    thumbnail: string;
     type: 'playlist';
     clientId: string;
 }

@@ -10,7 +10,7 @@ function requestApi(url){
             const resKeys = Object.keys(res.data);
             if(resKeys.length === 0) return reject(`URL is not an existing SoundCloud url`);
             if(res.data.kind === 'track') return resolve(new SoundCloudTrack(res.data, clientId));
-            else if(res.kind === 'playlist') return resolve(new SoundCloudPlaylist(res.data, clientId));
+            else if(res.data.kind === 'playlist') return resolve(new SoundCloudPlaylist(res.data, clientId));
             else return reject(`Expected kind 'track' or 'playlist', received '${res.data.kind}'`);
         }).catch(reject);
     });

@@ -1,6 +1,6 @@
 {
   "name": "sc-play",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A package which allows you to create streams and get information about SoundCloud tracks and playlists",
   "main": "./src/index.js",
   "scripts": {

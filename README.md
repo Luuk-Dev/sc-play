@@ -7,7 +7,7 @@ npm install sc-play
 ```
 
 ## Downloading
-To download a SoundCloud track, you can use the `stream` function. The `stream` function requires one argument, which is either the url of the track or the info about the track, which can be received with the [getInfo](#get-info) function. The `stream` function does offer a second argument with some settings you can adjust. The settings you can adjust are:
+To download a SoundCloud track, you can use the `stream` function. The `stream` function requires one argument, which is either the url of the track or the info about the track, which can be received with the [getInfo](#receiving-information) function. The `stream` function does offer a second argument with some settings you can adjust. The settings you can adjust are:
 * highWaterMark: The highWaterMark you'd like to set for the Readable stream (`stream` property)
 * download: A boolean which determines whether the package should download the stream for you or not
 * format: A number which stands for the index of the format you'd like to download
@@ -44,9 +44,21 @@ Example:
 const scplay = require('sc-play');
 
 scplay.getInfo('https://soundcloud.com/futureisnow/future-metro-boomin-we-still').then(info => {
-    console.log(info.title); // Output: We Still Don't Trust You
+    console.log(info.title); // Output: Future, Metro Boomin & The Weeknd - We Still Don't Trust You
     console.log(info.author.name); // Output: Future
 }).catch(console.log);
+```
+
+You can also receive information about a track with just the track id. To do this, you need to use the `fetchTrack` function instead of the `getInfo` function. The `fetchTrack` function only requires one argument, which is the id of the track which you would like to fetch. The function returns a Promise, just like the `getInfo` function and returns the same `SoundCloudTrack` once the Promise is fulfilled, just like the `getInfo` function.
+
+Example:
+```js
+const scplay = require('sc-play');
+
+scplay.fetchTrack(1799112163).then(info => {
+    console.log(info.title); // Output: Future & Metro Boomin - Streets Made Me A King
+    console.log(info.author.name); // Output: Future
+}).catch(console.log)
 ```
 
 ## Searching for tracks, playlists or albums

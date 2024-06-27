@@ -13,6 +13,8 @@ class SoundCloudStream extends EventEmitter{
         this.info = data.info;
         this.options = data.options;
         this.downloaded_time = 0;
+        this.mimeType = data.format.format.mime_type;
+        this.format = data.format;
         this.time = [];
         this.sub_urls = []; 
 

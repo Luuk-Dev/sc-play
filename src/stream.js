@@ -16,11 +16,12 @@ function getDownloadURL(url){
     });
 }
 
-function createStream(url, info, options){
+function createStream(url, info, format, options){
     return new Promise((resolve) => {
         let stream = new SoundCloudStream({
             url: url,
             options: options,
+            format: format,
             info: info
         });
 
@@ -39,7 +40,7 @@ function getUrl(info, options){
     if(typeof options.format !== 'number') options.format = 0;
     if(options.format >= urls.length) options.format = 0;
     let downloadUrl = urls[options.format];
-    return downloadUrl;
+    return {url: downloadUrl, format: info.formats[options.format]};
 }
 
 function stream(info, options){
@@ -65,10 +66,10 @@ function stream(info, options){
         }
 
         let downloadUrl = getUrl(info, options);
-        if(!downloadUrl) return reject(`No valid download url's were found`);
+        if(!downloadUrl?.url) return reject(`No valid download url's were found`);
 
-        getDownloadURL(downloadUrl).then(async res => {
-            let stream = await createStream(res, info, options);
+        getDownloadURL(downloadUrl.url).then(async res => {
+            let stream = await createStream(res, info, downloadUrl.format, options);
             resolve(stream);
         }).catch(async () => {
             try{

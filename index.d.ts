@@ -14,7 +14,7 @@ type SearchOptions = {
 interface StreamEvents {
     ready: [];
     error: [Error];
-};
+}
 
 interface SoundCloudTrack{
     uploaded: Date;
@@ -77,6 +77,8 @@ interface SoundCloudStream{
         download?: boolean;
         highWaterMark?: number;
     };
+    mimeType: string;
+    format: {};
     downloaded_time: number;
     time: [number];
     sub_urls: [string];
@@ -100,14 +102,14 @@ export function getInfo(url: string) : Promise<SoundCloudTrack | SoundCloudPlayl
  * @param info The url of the SoundCloud track or an instance of the SoundCloudTrack class of the track you would like to create a readable stream for
  * @param options Additional options for the stream function
  */
-export function stream(info: string | SoundCloudtrack, options: StreamOptions) : Promise<SoundCloudStream>;
+export function stream(info: string | SoundCloudTrack, options: StreamOptions) : Promise<SoundCloudStream>;
 
 /**
  * Searches for a track, playlist or album on SoundCloud
  * @param query The query you would like to use for the search
  * @param options Additional options to specify your search
  */
-export function search(query: string, options: SearchOptions) : Promise<[SoundCloudtrack | SoundCloudPlaylist]>;
+export function search(query: string, options: SearchOptions) : Promise<[SoundCloudTrack | SoundCloudPlaylist]>;
 
 /**
  * Updates the client id used to get the information from SoundCloud

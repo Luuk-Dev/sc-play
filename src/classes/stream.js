@@ -35,8 +35,13 @@ class SoundCloudStream extends EventEmitter{
                 let timeInfo = res.data.split('\n');
                 for(let i = 0; i < timeInfo.length; i++){
                     let subTimeInfo = timeInfo[i];
-                    if(subTimeInfo.startsWith("#EXTINF:")){
-                        this.time.push(subTimeInfo.split("#EXTINF:").join(""));
+                    if(/^#EXT-X-MAP:URI=("|`|')(.*)("|`|')$/.test(subTimeInfo)){
+                        let map = subTimeInfo.match(/^#EXT-X-MAP:URI=("|`|')(.*)("|`|')$/);
+                        if(map === null) continue;
+                        this.time.push(0.0);
+                        this.sub_urls.push(map[2]);
+                    } else if(subTimeInfo.startsWith("#EXTINF:")){
+                        this.time.push(parseFloat(subTimeInfo.split("#EXTINF:").join("")));
                     } else if(subTimeInfo.startsWith("https://")){
                         this.sub_urls.push(subTimeInfo);
                     } else continue;

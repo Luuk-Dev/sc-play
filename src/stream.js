@@ -2,7 +2,7 @@ let { clientId } = require('./util.js');
 const getClientId = require('./getClientId.js');
 const { request } = require('./request/request.js');
 const SoundCloudTrack = require('./classes/track.js');
-const getInfo = require('./getInfo');
+const getInfo = require('./getInfo.js');
 const SoundCloudStream = require('./classes/stream.js');
 
 function getDownloadURL(url){
@@ -78,10 +78,12 @@ function stream(info, options){
                 return reject(err);
             }
 
-            getDownloadURL(getUrl(info, options)).then(async res => {
+            downloadUrl = getUrl(info, options);
+
+            getDownloadURL(downloadUrl.url).then(async res => {
                 let stream = await createStream(res, info, options);
                 resolve(stream);
-            });
+            }).catch(reject);
         });
     });
 }
